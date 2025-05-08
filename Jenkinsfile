@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials ('rubbicon-dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials ('angelomakory-dockerhub')
     }
 
     stages {
@@ -41,7 +41,7 @@ pipeline {
        stage('Building') {
             steps {
                 echo 'Building....'
-                sh 'docker build -t rubbicon/devsecopsjourney:$BUILD_ID .'
+                sh 'docker build -t angelomakory/devsecopsjourney:$BUILD_ID .'
                
             }
         }
@@ -52,7 +52,7 @@ pipeline {
       }
       stage ('push'){
           steps {
-            sh 'docker push rubbicon/devsecopsjourney:$BUILD_ID'
+            sh 'docker push angelomakory/devsecopsjourney:$BUILD_ID'
            }  
          }
     }
