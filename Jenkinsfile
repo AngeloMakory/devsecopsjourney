@@ -45,11 +45,16 @@ pipeline {
                
             }
         }
-      stage('login') {
-          steps {
-              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-          }
-      }
+    //   stage('login') {
+    //       steps {
+    //           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    //       }
+    //   }
+      stage('Login to DockerHub') {
+        steps {
+        sh 'echo $DOCKERHUB_CREDENTIALS_PASSWORD | docker login -u $DOCKERHUB_CREDENTIALS_USERNAME --password-stdin'
+    }
+}
       stage ('push'){
           steps {
             sh 'docker push angelomakory/devsecopsjourney:$BUILD_ID'
