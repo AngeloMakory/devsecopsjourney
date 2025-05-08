@@ -55,11 +55,11 @@ pipeline {
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
     }
 }
-        stage('run on 5173'){
-            steps{
-                sh 'docker run -p 5173:5173 angelomakory/devsecopsjourney'
-            }
-        }
+        // stage('run on 5173'){
+        //     steps{
+        //         sh 'docker run -p 5173:5173 angelomakory/devsecopsjourney'
+        //     }
+        // }
       stage ('push'){
           steps {
             sh 'docker push angelomakory/devsecopsjourney:$BUILD_ID'
